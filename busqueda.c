@@ -7,6 +7,7 @@
 int main(int argc, char const *argv[]){
 
     int *arreglo, buscar_dato, dato_encontrado, tam_arreglo, num_hilos;
+    double utime0, stime0, wtime0, utime1, stime1, wtime1;
 
     FILE *fp = fopen("numeros10millones.txt", "r");
     if(fp == NULL){
@@ -29,11 +30,17 @@ int main(int argc, char const *argv[]){
         
         car_dat(arreglo, tam_arreglo , fp);
 
+        //Medicion de inicio del algoritmo
+        uswtime(&utime0, &stime0, &wtime0);
         dato_encontrado = blineal(arreglo, tam_arreglo, buscar_dato);
 
+        //Medicion de fin del algoritmo
+        uswtime(&utime1, &stime1, &wtime1);
+        
         (dato_encontrado == -1)
             ? printf("\t\tEl elemento no esta en el arreglo\n")
             : printf("\t\tEl elemento esta en la posición %d\n", dato_encontrado);
+        cal_timepos(wtime0, utime0, stime0, wtime1, utime1, stime1);
     }
 
     fclose(fp);

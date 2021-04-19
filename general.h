@@ -11,7 +11,7 @@
 /*DECLARACION DE FUNCIONES*/
 void llenar_arr(int [], int);       //Funcion que llena un arreglo
 void car_dat(int [], int , FILE *); //Funcion que carga los datos al arreglo
-
+void cal_timepos(double, double, double, double, double, double);
 
 //*****************************************************************
 //uswtime (Declaración)

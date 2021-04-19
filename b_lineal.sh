@@ -7,9 +7,9 @@ clear
 
 gcc busqueda.c algoritmos_b.c general.c -o bLineal
 
-for (( j=0; j<${#numeros[@]}; j++ ))
+for (( j=0; j<${#numeros[@]}; j++ )) # ${#numeros[@]}
 do
-    for (( i=0; i<2; i++ ))
+    for (( i=0; i<${#buscar[@]}; i++ ))
     do
         echo "iterando con n = " ${numeros[$j]}
         ./bLineal ${numeros[$j]} ${buscar[$i]} 8 

@@ -24,7 +24,31 @@ void llenar_arr(int a[], int tam){
     return;
 }
 
+void cal_timepos(double wtime0, double utime0, double stime0, double wtime1, double utime1, double stime1){
 
+    double t_real = wtime1 - wtime0;
+    double t_user = utime1 - utime0;
+    double t_sys = stime1 - stime0;
+    double t_cpu_wall = 100.0 * (t_user + t_sys)/t_real;
+    if (t_real > 1.0 || t_user > 1.0 || t_sys > 1.0)
+    {
+        //Cálculo del tiempo de ejecución del programa
+        printf("\n");
+        printf("real (Tiempo total)  %.10f s\n", t_real);
+        printf("user (Tiempo de procesamiento en CPU) %.10f s\n", t_user);
+        printf("sys (Tiempo en acciónes de E/S)  %.10f s\n", t_sys);
+        printf("CPU/Wall   %.10f %% \n", t_cpu_wall);
+        printf("\n");
+    }else{
+        //Mostrar los tiempos en formato exponecial
+        printf("\n");
+        printf("real (Tiempo total)  %.10e s\n", t_real);
+        printf("user (Tiempo de procesamiento en CPU) %.10e s\n",  t_user);
+        printf("sys (Tiempo en acciónes de E/S)  %.10e s\n", t_sys);
+        printf("CPU/Wall   %.10f %% \n",t_cpu_wall);
+        printf("\n");
+    }
+}
 
 //uswtime (Definición)
 //*****************************************************************
