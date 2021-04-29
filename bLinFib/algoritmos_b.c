@@ -22,8 +22,24 @@
         La sumatoria seria de i = 1 hasta n mas una n extra(caso cuando no esta)
         La sumatoria podria expresarse como n(n+1)/2
     }
-*/
 
+    Titulo: Algoritmo de busqeuda lineal 
+    Descripción: Es un algoritmo de busqueda no recursivo 
+    Fecha: 28 de abril del 2021
+    Versión: 1.0
+    Autor: Rodriguez Ramirez Sergio 
+    ¿Que hace?
+        Busca un elemento dentro de un arreglo 
+    ¿Como lo hace?
+        Va iterando sobre los elementos del arreglo hasta encontrar 
+        el dato a buscar, si es que esta dentro del arreglo
+    ¿Que recibe?
+        Recibe un arreglo de enteros, el tamaño(int) del arreglo y el dato(int) a buscar
+    ¿Que devuelve?
+        Devuelve la posición(int) del arerglo si la encontro y -1 si no encontro el dato
+    ¿Causa de errores?
+        Si enviara un arreglo de menor tamaño no podria recorrer todo el arreglo
+*/
 int blineal(int arreglo[], int tam_arreglo, int dato){
     int i;
 
@@ -33,7 +49,29 @@ int blineal(int arreglo[], int tam_arreglo, int dato){
     return -1;
 }
 
-/*  OPERACIONES BASICAS
+/****************************************************************************************
+*****************************************************************************************
+    Titulo: Algoritmo de busqeuda fibonacci 
+    Descripción: Es un algoritmo de busqueda que va iterando con los numeros de fibonacci
+    Fecha: 28 de abril del 2021
+    Versión: 1.1
+    Autor: Rodriguez Ramirez Sergio 
+    ¿Que hace?
+        Busca un elemento dentro de un arreglo 
+    ¿Como lo hace?
+        Va iterando sobre los elementos del arreglo hasta encontrar 
+        el dato a buscar, si es que esta dentro del arreglo
+    ¿Que recibe?
+        Recibe un arreglo de enteros, el tamaño del arreglo(int)y el dato(int) a buscar
+    ¿Que devuelve?
+        Devuelve la posición(int) del arerglo si la encontro y -1 si no encontro el dato
+    ¿Causa de errores?
+        Si el dato no se encuentra manda -1
+
+*****************************************************************************************
+*****************************************************************************************
+
+    OPERACIONES BASICAS
     Comparaciones con los elementos del arreglo
     
     ANALISIS DE CASOS
@@ -52,12 +90,13 @@ int blineal(int arreglo[], int tam_arreglo, int dato){
         La sumatoria seria de i = 1 hasta n mas una n extra(caso cuando no esta)
         La sumatoria podria expresarse como n(n+1)/2
     }
-*/
+*****************************************************************************************
+****************************************************************************************/
 
 int bfibonacci(int arr[], int tam_arreglo, int dato){
-    int fibNum1 = 0; 
-    int fibNum2 = 1; 
-    int fibNum3 = fibNum1 + fibNum2; 
+    int fibNum1 = 0;                    //Numero de fibonacci n-2
+    int fibNum2 = 1;                    //Numero de fibonacci n-1
+    int fibNum3 = fibNum1 + fibNum2;    //Numero de fibonacci n
  
     while (fibNum3 < tam_arreglo) {
         fibNum1 = fibNum2;
@@ -93,81 +132,33 @@ int bfibonacci(int arr[], int tam_arreglo, int dato){
     return -1;
 }
 
-// RETORNA EL MINIMO DE DOS NUMEROS
+/****************************************************************************************
+*****************************************************************************************
+    Titulo: Algoritmo para el minimo de dos numeros 
+    Descripción: Es un algoritmo que devuelve el minimo de dos numeros
+    Fecha: 28 de abril del 2021
+    Versión: 1.0
+    Autor: Rodriguez Ramirez Sergio 
+    ¿Que hace?
+        Compara cual es el menor de dos numeros 
+    ¿Como lo hace?
+        Hace una comparación para saber cual de los dos numeros es menor
+    ¿Que recibe?
+        Recibe dos numeros enteros
+    ¿Que devuelve?
+        Devuelve un numero entero
+    ¿Causa de errores?
+        Si se compararan dos numeros iguales regresaria el primer numero
+
+*****************************************************************************************
+****************************************************************************************/
 int min(int x, int y){
     return (x <= y) ? x : y;
 }
 
-/*
-void* proceso(void* argumentos){
-
-    struct parametros* datos_p = (struct parametros*)argumentos;
-    struct parametros* aux2 = (struct parametros*)argumentos;
-    int inicio,fin,i;
-    int id = datos_p -> id;
-    int tam_arreglo = datos_p -> tam_arreglo;
-    int buscando = datos_p -> buscando;
-    int num_hilos = datos_p -> num_hilos;
-    int *arreglo = datos_p -> arreglo;
-    int *aux;
-
-    //Revisar la parte de los datos a procesar  
-    inicio = (id * tam_arreglo)/num_hilos;
-    if(id==num_hilos-1)  
-        fin=tam_arreglo-1;
-    else
-        fin=(id+1)*tam_arreglo;
-
-    tam_arreglo = fin - inicio + 1;
-    aux = (int *)malloc(sizeof(int)*tam_arreglo);
-
-    printf("\nHola desde procesar\tSoy el thread %d\tInicio %d\tTermino %d",id,inicio,fin);
-
-    for(i=0;i<=fin;i++)     
-        //printf("\nProcesando dato %d",i);
-        aux[i] = arreglo[inicio+i];
-    
-    //printf("\nBye desde procesar\tSoy el thread %d\tHe terminado",num_hilos);
-
-    aux2->encontrado = bfibonacci(aux, tam_arreglo, buscando);
-    argumentos = (void *)aux2;
-}
-
-
-
-void crear_hilos(int num_hilos, pthread_t hilos[], struct parametros parame[], int funcion){
-    pthread_t *aux=hilos;
-
-    switch(funcion){
-        case 5:
-            for (int i = 1; i < num_hilos && parame->encontrado == -1; ++i){
-                if (pthread_create (&aux[i], NULL, proceso, (void *)&parame[i]) != 0 ){
-                    perror("El thread no  pudo crearse");
-                    exit(-1);
-                }
-            }
-            break;
-        default:
-            perror("La función no existe");
-            exit(-1);
-    }
-}
-
-void ejecutar_hilos(int num_hilos, pthread_t hilos[], int funcion){
-    
-    switch(funcion){
-        case 5:
-            for (int i=1; i<num_hilos; i++){
-                pthread_join (hilos[i], NULL);
-            }
-            break;
-        default:
-            perror("La función no existe");
-            exit(-1);
-    }
-}*/
-
-/*  OPERACIONES BASICAS
+/****************************************************************************************
+*****************************************************************************************
+    OPERACIONES BASICAS
     Comparaciones con los elementos del arreglo
     Asignaciones a mayor1 y mayor2
     Asignacion al indice i
@@ -182,4 +173,5 @@ void ejecutar_hilos(int num_hilos, pthread_t hilos[], int funcion){
     CASO MEDIO{
         
     }
-*/
+*****************************************************************************************
+****************************************************************************************/

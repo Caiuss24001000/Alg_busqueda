@@ -5,18 +5,18 @@ numeros=(1000000 2000000 3000000 4000000 5000000 6000000 7000000 8000000 9000000
 clear
 rm -r resultado/*.txt
 
-gcc bLinFib/busqueda.c bLinFib/algoritmos_b.c bLinFib/general.c -lpthread -o bFibo
+#gcc bLinFib/busqueda.c bLinFib/algoritmos_b.c bLinFib/general.c -lpthread -o bFibo
 
-for (( j=0; j<${#numeros[@]}; j++ )) # ${#numeros[@]}
-do
-    echo "Iterando con n = " ${numeros[$j]} >>resultado/fibonacci.txt
-    for (( i=0; i<${#buscando[@]}; i++ )) # ${#buscando[@]}
-    do
+#for (( j=0; j<${#numeros[@]}; j++ )) # ${#numeros[@]}
+#do
+#    echo "Iterando con n = " ${numeros[$j]} >>resultado/fibonacci.txt
+#    for (( i=0; i<${#buscando[@]}; i++ )) # ${#buscando[@]}
+#    do
         
-        ./bFibo ${numeros[$j]} ${buscando[$i]} 8 >>resultado/fibonacci.txt
-        echo >> resultado/fibonacci.txt
-    done
-done
+#        ./bFibo ${numeros[$j]} ${buscando[$i]} 8 >>resultado/fibonacci.txt
+#        echo >> resultado/fibonacci.txt
+#    done
+#done
 
 #for (( j=0; j<${#numeros[@]}; j++ )) # ${#numeros[@]}
 #do
@@ -29,13 +29,15 @@ done
 #    done
 #done
 
+#gcc bExponencial/expon.c bLinFib/general.c -lpthread -o bExpo
+
 #for (( j=0; j<${#numeros[@]}; j++ )) # ${#numeros[@]}
 #do
 #    echo "Iterando con n = " ${numeros[$j]} >>resultado/exponencial.txt
-#    for (( i=0; i<3; i++ )) # ${#buscando[@]}
+#    for (( i=0; i<${#buscando[@]}; i++ )) # ${#buscando[@]}
 #    do
-#        
-#        ./bLineal ${numeros[$j]} ${buscando[$i]} 8 >>resultado/exponencial.txt
+        
+#        ./bExpo ${numeros[$j]} ${buscando[$i]} 8 >>resultado/exponencial.txt
 #        echo >> resultado/exponencial.txt
 #    done
 #done
@@ -53,16 +55,16 @@ done
 #    done
 #done
 
-#gcc bBin/testBusquedaBinaria.c bBin/busquedaBinaria.c -o bBinaria
+gcc bBin/testBusquedaBinariaTiempos.c bBin/busquedaBinaria.c -o bBinaria
 
-#for (( j=0; j<${#numeros[@]}; j++ )) # ${#numeros[@]}
-#do
-#    echo "Iterando con n = " ${numeros[$j]} #>>resultado/binaria.txt
-#    for (( i=0; i<3; i++ )) # ${#buscando[@]}
-#    do
-        
-#        ./bBinaria ${numeros[$j]} ${buscando[$i]} 8 #>>resultado/binaria.txt
-#        echo #>> binaria.txt
-#    done
-#done
+for (( j=0; j<${#numeros[@]}; j++ )) # ${#numeros[@]}
+do
+    echo "Iterando con n = " ${numeros[$j]} #>>resultado/binaria.txt
+    for (( i=0; i<${#buscando[@]}; i++ )) # ${#buscando[@]}
+    do
+       
+        ./bBinaria ${numeros[$j]} ${buscando[$i]} 8 #>>resultado/binaria.txt
+        echo #>> binaria.txt
+    done
+done
 

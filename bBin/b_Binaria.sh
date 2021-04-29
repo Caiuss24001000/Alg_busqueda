@@ -7,10 +7,10 @@ clear
 gcc testBusquedaBinaria.c busquedaBinaria.c -o testBusquedaBinariaEjecutable
 
 
-for (( j=0; j<10; j++ )) # ${#numeros[@]}
+for (( j=0; j<${#numeros[@]}; j++ )) # ${#numeros[@]}
 do
     echo "iterando con n = " ${numeros[$j]}
-    for (( i=0; i<10; i++ )) # ${#buscando[@]}
+    for (( i=0; i<${#buscando[@]}; i++ )) # ${#buscando[@]}
     do       
         ./testBusquedaBinariaEjecutable ${numeros[$j]} ${buscando[$i]} 8 
     done
