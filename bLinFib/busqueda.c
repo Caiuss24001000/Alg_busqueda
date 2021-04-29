@@ -120,14 +120,11 @@ int main(int argc, char const *argv[]){
         uswtime(&utime0, &stime0, &wtime0);
         
         dato_encontrado = bfibonacci(arreglo, tam_arreglo, buscando);
-
         (dato_encontrado == -1)
             ? printf("\t\tEl elemento no esta en el arreglo\n")
             : printf("\t\tEl elemento esta en la posición %d\n", dato_encontrado);
-
         //Medicion de fin del algoritmo
         uswtime(&utime1, &stime1, &wtime1);
-
         double t_real = wtime1 - wtime0;
         printf("\n");
         printf("real (Tiempo total)  %.10e s\n", t_real);
